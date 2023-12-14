@@ -2,7 +2,6 @@
 
 require __DIR__ . '/../vendor/autoload.php';
 
-use function python\import;
 use function python\import_sub;
 
 extract(import_sub('modelscope', 'AutoModelForCausalLM,AutoTokenizer,GenerationConfig'));
