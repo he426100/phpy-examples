@@ -3,5 +3,10 @@
         "swoole/phpy": "^1.0",
         "psy/psysh": "^0.11.22",
         "laravel/prompts": "^0.1.13"
+    },
+    "autoload": {
+        "files": [
+            "helpers.php"
+        ]
     }
 }
