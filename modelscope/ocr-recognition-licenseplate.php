@@ -16,7 +16,7 @@ $model_path = (getenv('MODEL_PATH') ?: 'damo') . '/cv_convnextTiny_ocr-recogniti
 $ocr_recognition = $pipeline($Tasks->ocr_recognition, model: $model_path);
 
 ### 使用url
-$img_url = 'https://www.autoimg.cn/album/2010/11/7/500_d8705782-3480-41a2-b7d0-01f384e06ed3.jpg';
+$img_url = 'http://duguang-labelling.oss-cn-shanghai.aliyuncs.com/mass_img_licenseplate//ocr_recognition_licenseplate.jpg';
 $result = $ocr_recognition($img_url);
 print($result . "\n");
 
