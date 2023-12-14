@@ -9,8 +9,8 @@
   - [mnist](https://github.com/he426100/phpy-examples/blob/main/paddlenlp/mnist.php)
 
 - modelscope
-  - 一键验证环境
-  - [通义千问-1_8B](https://github.com/he426100/phpy-examples/blob/main/modelscope/qwen-1.8b.php)
+  - 一键验证环境  
   ```
   php -r "PyCore::print(PyCore::import('modelscope.pipelines')->pipeline('word-segmentation')('今天天气不错，适合 出去游玩'));"
   ```
+  - [通义千问-1_8B](https://github.com/he426100/phpy-examples/blob/main/modelscope/qwen-1.8b.php)
