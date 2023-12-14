@@ -1,7 +1,8 @@
 <?php
 
 /**
- * @link https://modelscope.cn/models/ZhipuAI/chatglm3-6b/summary
+ * @link https://modelscope.cn/models/damo/cv_convnextTiny_ocr-recognition-general_damo/summary
+ * pip install opencv-python
  */
 require __DIR__ . '/../vendor/autoload.php';
 
