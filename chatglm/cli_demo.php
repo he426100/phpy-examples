@@ -1,8 +1,6 @@
 <?php
 
-define('BASE_PATH', __DIR__ . '/..');
-
-require BASE_PATH . '/vendor/autoload.php';
+require __DIR__ . '/../bootstrap.php';
 require __DIR__ . '/utils.php';
 
 use function Laravel\Prompts\text;
@@ -16,7 +14,7 @@ $AutoModel = $transformers->AutoModel;
 $AutoTokenizer = $transformers->AutoTokenizer;
 $torch = PyCore::import('torch');
 
-$MODEL_PATH = '/app/chatglm3-6b';
+$MODEL_PATH = (getenv('MODEL_PATH') ?: 'ZhipuAI') . '/chatglm3-6b';
 $TOKENIZER_PATH = getenv("TOKENIZER_PATH") ?: $MODEL_PATH;
 $DEVICE = $torch->cuda->is_available() ? 'cuda' : 'cpu';
 
@@ -52,7 +50,8 @@ while (true) {
     info('ChatGLM: ');
     try {
         $current_length = 0;
-        $rs = $model->stream_chat($tokenizer,
+        $rs = $model->stream_chat(
+            $tokenizer,
             $query,
             history: $history,
             top_p: 1,

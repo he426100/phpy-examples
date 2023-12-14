@@ -1,6 +1,6 @@
 <?php
 
-require dirname(__DIR__) . '/vendor/autoload.php';
+require __DIR__ . '/../bootstrap.php';
 
 use function python\import;
 use function python\import_sub;

@@ -3,9 +3,7 @@
  * @link https://modelscope.cn/models/qwen/Qwen-1_8B-Chat/summary
  */
 
-define('BASE_PATH', __DIR__ . '/..');
-
-require BASE_PATH . '/vendor/autoload.php';
+require __DIR__ . '/../bootstrap.php';
 
 use function python\import_sub;
 use function Laravel\Prompts\text;
@@ -14,9 +12,10 @@ use function Laravel\Prompts\error;
 
 extract(import_sub('modelscope', 'AutoModelForCausalLM,AutoTokenizer,GenerationConfig'));
 
+$model_path = (getenv('MODEL_PATH') ?: 'Qwen') . '/Qwen-1_8B-Chat';
 # Note: The default behavior now has injection attack prevention off.
-$tokenizer = $AutoTokenizer->from_pretrained("/mnt/g/ai/modelscope/Qwen-1_8B-Chat/", revision: 'master', trust_remote_code: true);
-$model = $AutoModelForCausalLM->from_pretrained("/mnt/g/ai/modelscope/Qwen-1_8B-Chat/", revision: 'master', device_map: "auto", trust_remote_code: true)->eval();
+$tokenizer = $AutoTokenizer->from_pretrained($model_path, revision: 'master', trust_remote_code: true);
+$model = $AutoModelForCausalLM->from_pretrained($model_path, revision: 'master', device_map: "auto", trust_remote_code: true)->eval();
 
 $welcome = '欢迎使用 通义千问-1_8B-Chat 模型，输入内容即可进行对话，clear 清空对话历史，stop 终止程序';
 

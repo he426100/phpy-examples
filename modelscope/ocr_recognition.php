@@ -2,9 +2,9 @@
 
 /**
  * @link https://modelscope.cn/models/damo/cv_convnextTiny_ocr-recognition-general_damo/summary
- * pip install opencv-python
+ * pip install opencv-python transformers SentencePiece
  */
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../bootstrap.php';
 
 use function python\import;
 use function python\import_sub;
@@ -13,7 +13,8 @@ extract(import_sub('modelscope.pipelines', 'pipeline'));
 extract(import_sub('modelscope.utils.constant', 'Tasks'));
 extract(import('cv2'));
 
-$ocr_recognition = $pipeline($Tasks->ocr_recognition, model: '/mnt/g/ai/modelscope/cv_convnextTiny_ocr-recognition-general_damo');
+$model_path = (getenv('MODEL_PATH') ?: 'damo') . '/cv_convnextTiny_ocr-recognition-general_damo';
+$ocr_recognition = $pipeline($Tasks->ocr_recognition, model: $model_path);
 
 ### 使用url
 $img_url = 'http://duguang-labelling.oss-cn-shanghai.aliyuncs.com/mass_img_tmp_20220922/ocr_recognition.jpg';

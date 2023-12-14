@@ -1,25 +1,29 @@
 <?php
+/**
+ * @link https://modelscope.cn/models/qwen/Qwen-1_8B-Chat/summary
+ */
 
-require __DIR__ . '/../vendor/autoload.php';
+require __DIR__ . '/../bootstrap.php';
 
 use function python\import_sub;
 
 extract(import_sub('modelscope', 'AutoModelForCausalLM,AutoTokenizer,GenerationConfig'));
 
+$model_path = (getenv('MODEL_PATH') ?: 'Qwen') . '/Qwen-1_8B-Chat';
 # Note: The default behavior now has injection attack prevention off.
-$tokenizer = $AutoTokenizer->from_pretrained("/mnt/g/ai/modelscope/Qwen-1_8B-Chat/", revision: 'master', trust_remote_code: true);
+$tokenizer = $AutoTokenizer->from_pretrained($model_path, revision: 'master', trust_remote_code: true);
 
 # use bf16
-# $model = $AutoModelForCausalLM->from_pretrained("/mnt/g/ai/modelscope/Qwen-1_8B-Chat/", device_map: "auto", trust_remote_code: true, bf16: true).eval();
+# $model = $AutoModelForCausalLM->from_pretrained($model_path, device_map: "auto", trust_remote_code: true, bf16: true).eval();
 # use fp16
-# $model = $AutoModelForCausalLM->from_pretrained("/mnt/g/ai/modelscope/Qwen-1_8B-Chat/", device_map: "auto", trust_remote_code: true, fp16: true).eval();
+# $model = $AutoModelForCausalLM->from_pretrained($model_path, device_map: "auto", trust_remote_code: true, fp16: true).eval();
 # use cpu only
-# $model = $AutoModelForCausalLM->from_pretrained("/mnt/g/ai/modelscope/Qwen-1_8B-Chat/", device_map: "cpu", trust_remote_code: true).eval();
+# $model = $AutoModelForCausalLM->from_pretrained($model_path, device_map: "cpu", trust_remote_code: true).eval();
 # use auto mode, automatically select precision based on the device.
-$model = $AutoModelForCausalLM->from_pretrained("/mnt/g/ai/modelscope/Qwen-1_8B-Chat/", revision: 'master', device_map: "auto", trust_remote_code: true)->eval();
+$model = $AutoModelForCausalLM->from_pretrained($model_path, revision: 'master', device_map: "auto", trust_remote_code: true)->eval();
 
 # Specify hyperparameters for generation. But if you use transformers>=4.32.0, there is no need to do this.
-# $model->generation_config = GenerationConfig.from_pretrained("/mnt/g/ai/modelscope/Qwen-1_8B-Chat/", trust_remote_code: true) # 可指定不同的生成长度、top_p等相关超参
+# $model->generation_config = GenerationConfig.from_pretrained($model_path, trust_remote_code: true) # 可指定不同的生成长度、top_p等相关超参
 
 # 第一轮对话 1st dialogue turn
 [$response, $history] = PyCore::scalar($model->chat($tokenizer, "你好", history: null));
