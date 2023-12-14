@@ -7,3 +7,9 @@
   - [一键UIE预测](https://github.com/he426100/phpy-examples/blob/main/paddlenlp/test.php)
   - [hello](https://github.com/he426100/phpy-examples/blob/main/paddlenlp/hello.php)
   - [mnist](https://github.com/he426100/phpy-examples/blob/main/paddlenlp/mnist.php)
+
+- modelscope
+  - 一键验证环境
+  ```
+  php -r "PyCore::print(PyCore::import('modelscope.pipelines')->pipeline('word-segmentation')('今天天气不错，适合 出去游玩'));"
+  ```
