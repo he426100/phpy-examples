@@ -72,8 +72,8 @@ namespace {
          */
         function hf_hub_download(string $model): string
         {
-            $hub_download = PyCore::import('huggingface_hub')->hf_hub_download;
-            return $hub_download($model, cache_dir: getenv('HG_CACHE') ?: null);
+            $snapshot_download = PyCore::import('huggingface_hub')->snapshot_download;
+            return $snapshot_download($model, cache_dir: getenv('HG_CACHE') ?: null);
         }
     }
 }
