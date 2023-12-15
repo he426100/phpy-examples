@@ -24,6 +24,7 @@
 
 ### 安装python
 - [https://docs.conda.io/projects/miniconda/en/latest/](https://docs.conda.io/projects/miniconda/en/latest/)
+- [https://docs.anaconda.com/free/anaconda/install/linux/](https://docs.anaconda.com/free/anaconda/install/linux/)
 
 ### 加速pip
 - 阿里源
