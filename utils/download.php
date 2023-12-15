@@ -5,6 +5,8 @@
  */
 require __DIR__ . '/../bootstrap.php';
 
-use function modelscope\snapshot_download;
-
-echo snapshot_download($argv[1]), PHP_EOL;
+if (($argv[2] ?? '') == 'hf') {
+    echo hf_hub_download($argv[1]), PHP_EOL;
+} else {
+    echo ms_hub_download($argv[1]), PHP_EOL;
+}
