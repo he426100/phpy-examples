@@ -32,6 +32,12 @@ namespace python {
     }
 
     if (!function_exists('import_sub')) {
+        /**
+         * 批量导入python模块，可搭配extract使用
+         * @param mixed $name 
+         * @param string|array $subs 
+         * @return array 
+         */
         function import_sub($name, string|array $subs): array
         {
             if (is_string($subs)) {
@@ -48,7 +54,12 @@ namespace modelscope {
     use PyCore;
 
     if (!function_exists('snapshot_download')) {
-        function snapshot_download($model): string
+        /**
+         * 使用ModelScope Library Hub下载模型
+         * @param string $model 
+         * @return string 
+         */
+        function snapshot_download(string $model): string
         {
             $snapshot_download = PyCore::import('modelscope.hub.snapshot_download')->snapshot_download;
             return $snapshot_download($model, cache_dir: getenv('MS_CACHE') ?: null);
@@ -61,7 +72,12 @@ namespace {
     use function modelscope\snapshot_download;
 
     if (!function_exists('ms_snapshot')) {
-        function ms_snapshot($model): string
+        /**
+         * 使用ModelScope Library Hub下载模型
+         * @param string $model 
+         * @return string 
+         */
+        function ms_snapshot(string $model): string
         {
             return snapshot_download($model);
         }
