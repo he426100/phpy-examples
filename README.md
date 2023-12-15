@@ -1,13 +1,5 @@
 ### phpy示例
 
-- chatglm
-  - [cli_demo](https://github.com/he426100/phpy-examples/blob/main/chatglm/cli_demo.php)
-
-- paddle
-  - [一键UIE预测](https://github.com/he426100/phpy-examples/blob/main/paddlenlp/test.php)
-  - [hello](https://github.com/he426100/phpy-examples/blob/main/paddlenlp/hello.php)
-  - [mnist](https://github.com/he426100/phpy-examples/blob/main/paddlenlp/mnist.php)
-
 - modelscope
   - 一键验证环境  
   ```
@@ -20,6 +12,14 @@
   - [DCT-Net人像卡通化](https://github.com/he426100/phpy-examples/blob/main/modelscope/person-image-cartoon.php)
   - [DCT-Net人像卡通化-3D](https://github.com/he426100/phpy-examples/blob/main/modelscope/person-image-cartoon-3d.php)
   - [卡通系列文生图模型](https://github.com/he426100/phpy-examples/blob/main/modelscope/cartoon_stable_diffusion_design.php)
+
+- chatglm
+  - [cli_demo](https://github.com/he426100/phpy-examples/blob/main/chatglm/cli_demo.php)
+
+- paddle
+  - [一键UIE预测](https://github.com/he426100/phpy-examples/blob/main/paddlenlp/test.php)
+  - [hello](https://github.com/he426100/phpy-examples/blob/main/paddlenlp/hello.php)
+  - [mnist](https://github.com/he426100/phpy-examples/blob/main/paddlenlp/mnist.php)
 
 ### 安装python
 - [https://docs.conda.io/projects/miniconda/en/latest/](https://docs.conda.io/projects/miniconda/en/latest/)
