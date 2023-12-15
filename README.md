@@ -28,7 +28,15 @@ pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
 pip config set install.trusted-host mirrors.aliyun.com
 ```
 
-### 环境安装
+### 安装环境
 - [魔塔modelscope](https://modelscope.cn/docs/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85)
 - [飞浆paddle](https://www.paddlepaddle.org.cn/install/quick)
 - [transformers](https://huggingface.co/docs/transformers/installation)
+
+### 安装驱动
+- [cuda](https://developer.nvidia.com/cuda-downloads)
+- [cudnn](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#installlinux-tar)
+- [tensorrt](https://docs.nvidia.com/deeplearning/tensorrt/install-guide/index.html#installing-tar)
+
+### 安装php和phpy扩展
+- 参考[Dockerfile](https://github.com/he426100/phpy-examples/blob/main/Dockerfile)
