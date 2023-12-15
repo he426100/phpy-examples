@@ -42,3 +42,28 @@ namespace python {
         }
     }
 }
+
+namespace modelscope {
+
+    use PyCore;
+
+    if (!function_exists('snapshot_download')) {
+        function snapshot_download($model): string
+        {
+            $snapshot_download = PyCore::import('modelscope.hub.snapshot_download')->snapshot_download;
+            return $snapshot_download($model, cache_dir: getenv('MS_CACHE') ?: null);
+        }
+    }
+}
+
+namespace {
+
+    use function modelscope\snapshot_download;
+
+    if (!function_exists('ms_snapshot')) {
+        function ms_snapshot($model): string
+        {
+            return snapshot_download($model);
+        }
+    }
+}

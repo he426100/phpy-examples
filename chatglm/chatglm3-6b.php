@@ -9,7 +9,7 @@ use function python\import_sub;
 
 extract(import_sub('modelscope', 'AutoTokenizer,AutoModel'));
 
-$model_path = getenv('MS_CACHE') . 'ZhipuAI/chatglm3-6b';
+$model_path = ms_snapshot('ZhipuAI/chatglm3-6b');
 $tokenizer = $AutoTokenizer->from_pretrained($model_path, trust_remote_code: true);
 $model = $AutoModel->from_pretrained($model_path, trust_remote_code: true)->half()->cuda();
 $model = $model->eval();

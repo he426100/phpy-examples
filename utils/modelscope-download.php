@@ -5,5 +5,6 @@
  */
 require __DIR__ . '/../bootstrap.php';
 
-$snapshot_download = PyCore::import('modelscope.hub.snapshot_download')->snapshot_download;
-echo $snapshot_download($argv[1], cache_dir: getenv('MS_CACHE') ?: null), PHP_EOL;
+use function modelscope\snapshot_download;
+
+echo snapshot_download($argv[1]), PHP_EOL;

@@ -14,7 +14,7 @@ $AutoModel = $transformers->AutoModel;
 $AutoTokenizer = $transformers->AutoTokenizer;
 $torch = PyCore::import('torch');
 
-$MODEL_PATH = getenv('MS_CACHE') . 'ZhipuAI/chatglm3-6b';
+$MODEL_PATH = ms_snapshot('ZhipuAI/chatglm3-6b');
 $TOKENIZER_PATH = getenv('TOKENIZER_PATH') ?: $MODEL_PATH;
 $DEVICE = $torch->cuda->is_available() ? 'cuda' : 'cpu';
 
