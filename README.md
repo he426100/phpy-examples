@@ -17,6 +17,7 @@
   - [通义千问-1_8B-chat](https://github.com/he426100/phpy-examples/blob/main/modelscope/qwen-1.8b-chat.php)
   - [读光-文字识别-行识别模型-中英-通用领域](https://github.com/he426100/phpy-examples/blob/main/modelscope/ocr_recognition.php)
   - [读光-文字识别-行识别模型-中英-车牌文本领域](https://github.com/he426100/phpy-examples/blob/main/modelscope/ocr-recognition-licenseplate.php)
+
 ### 安装python
 - [https://docs.conda.io/projects/miniconda/en/latest/](https://docs.conda.io/projects/miniconda/en/latest/)
 
@@ -31,6 +32,7 @@ pip config set install.trusted-host mirrors.aliyun.com
 ### 安装环境
 - [魔塔modelscope](https://modelscope.cn/docs/%E7%8E%AF%E5%A2%83%E5%AE%89%E8%A3%85)
 - [飞浆paddle](https://www.paddlepaddle.org.cn/install/quick)
+- [huggingface](https://huggingface.co/docs/huggingface_hub/quick-start) ([huggingface镜像站](https://hf-mirror.com/))
 - [transformers](https://huggingface.co/docs/transformers/installation)
 
 ### 安装驱动
