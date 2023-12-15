@@ -18,6 +18,7 @@
   - [读光-文字识别-行识别模型-中英-通用领域](https://github.com/he426100/phpy-examples/blob/main/modelscope/ocr_recognition.php)
   - [读光-文字识别-行识别模型-中英-车牌文本领域](https://github.com/he426100/phpy-examples/blob/main/modelscope/ocr-recognition-licenseplate.php)
   - [DCT-Net人像卡通化](https://github.com/he426100/phpy-examples/blob/main/modelscope/person-image-cartoon.php)
+  - [DCT-Net人像卡通化-3D](https://github.com/he426100/phpy-examples/blob/main/modelscope/person-image-cartoon-3d.php)
   - [卡通系列文生图模型](https://github.com/he426100/phpy-examples/blob/main/modelscope/cartoon_stable_diffusion_design.php)
 
 ### 安装python
