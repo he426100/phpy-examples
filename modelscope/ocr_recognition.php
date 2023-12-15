@@ -13,7 +13,7 @@ extract(import_sub('modelscope.pipelines', 'pipeline'));
 extract(import_sub('modelscope.utils.constant', 'Tasks'));
 extract(import('cv2'));
 
-$model_path = ms_snapshot('damo/cv_convnextTiny_ocr-recognition-general_damo');
+$model_path = ms_hub_download('damo/cv_convnextTiny_ocr-recognition-general_damo');
 $ocr_recognition = $pipeline($Tasks->ocr_recognition, model: $model_path);
 
 ### 使用url

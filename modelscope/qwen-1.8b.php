@@ -9,7 +9,7 @@ use function python\import_sub;
 
 extract(import_sub('modelscope', 'AutoModelForCausalLM,AutoTokenizer,GenerationConfig'));
 
-$model_path = ms_snapshot('qwen/Qwen-1_8B-Chat');
+$model_path = ms_hub_download('qwen/Qwen-1_8B-Chat');
 # Note: The default behavior now has injection attack prevention off.
 $tokenizer = $AutoTokenizer->from_pretrained($model_path, revision: 'master', trust_remote_code: true);
 

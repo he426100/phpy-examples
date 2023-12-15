@@ -49,37 +49,31 @@ namespace python {
     }
 }
 
-namespace modelscope {
+namespace {
 
-    use PyCore;
-
-    if (!function_exists('snapshot_download')) {
+    if (!function_exists('ms_hub_download')) {
         /**
          * 使用ModelScope Library Hub下载模型
          * @param string $model 
          * @return string 
          */
-        function snapshot_download(string $model): string
+        function ms_hub_download(string $model): string
         {
             $snapshot_download = PyCore::import('modelscope.hub.snapshot_download')->snapshot_download;
             return $snapshot_download($model, cache_dir: getenv('MS_CACHE') ?: null);
         }
     }
-}
 
-namespace {
-
-    use function modelscope\snapshot_download;
-
-    if (!function_exists('ms_snapshot')) {
+    if (!function_exists('hf_hub_download')) {
         /**
-         * 使用ModelScope Library Hub下载模型
+         * huggingface download files
          * @param string $model 
          * @return string 
          */
-        function ms_snapshot(string $model): string
+        function hf_hub_download(string $model): string
         {
-            return snapshot_download($model);
+            $hub_download = PyCore::import('huggingface_hub')->hf_hub_download;
+            return $hub_download($model, cache_dir: getenv('HG_CACHE') ?: null);
         }
     }
 }
