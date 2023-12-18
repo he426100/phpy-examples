@@ -6,12 +6,12 @@
 require __DIR__ . '/../bootstrap.php';
 
 use function python\import;
-use function python\import_sub;
+use function python\import_from;
 
 extract(import('cv2'));
-extract(import_sub('modelscope.outputs', 'OutputKeys'));
-extract(import_sub('modelscope.pipelines', 'pipeline'));
-extract(import_sub('modelscope.utils.constant', 'Tasks'));
+extract(import_from('modelscope.outputs', 'OutputKeys'));
+extract(import_from('modelscope.pipelines', 'pipeline'));
+extract(import_from('modelscope.utils.constant', 'Tasks'));
 
 $img_cartoon = $pipeline($Tasks->image_portrait_stylization, model: ms_hub_download('damo/cv_unet_person-image-cartoon_compound-models'));
 # 图像本地路径

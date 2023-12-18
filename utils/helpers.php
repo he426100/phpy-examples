@@ -31,14 +31,14 @@ namespace python {
         }
     }
 
-    if (!function_exists('import_sub')) {
+    if (!function_exists('import_from')) {
         /**
          * 批量导入python模块，可搭配extract使用
          * @param mixed $name 
          * @param string|array $subs 
          * @return array 
          */
-        function import_sub($name, string|array $subs): array
+        function import_from($name, string|array $subs): array
         {
             if (is_string($subs)) {
                 $subs = explode(',', $subs);

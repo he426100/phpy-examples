@@ -5,9 +5,9 @@
  */
 require __DIR__ . '/../bootstrap.php';
 
-use function python\import_sub;
+use function python\import_from;
 
-extract(import_sub('modelscope', 'AutoTokenizer,AutoModel'));
+extract(import_from('modelscope', 'AutoTokenizer,AutoModel'));
 
 $model_path = ms_hub_download('ZhipuAI/chatglm3-6b');
 $tokenizer = $AutoTokenizer->from_pretrained($model_path, trust_remote_code: true);

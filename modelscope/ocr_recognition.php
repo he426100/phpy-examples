@@ -7,10 +7,10 @@
 require __DIR__ . '/../bootstrap.php';
 
 use function python\import;
-use function python\import_sub;
+use function python\import_from;
 
-extract(import_sub('modelscope.pipelines', 'pipeline'));
-extract(import_sub('modelscope.utils.constant', 'Tasks'));
+extract(import_from('modelscope.pipelines', 'pipeline'));
+extract(import_from('modelscope.utils.constant', 'Tasks'));
 extract(import('cv2'));
 
 $model_path = ms_hub_download('damo/cv_convnextTiny_ocr-recognition-general_damo');

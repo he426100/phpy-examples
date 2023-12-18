@@ -3,12 +3,12 @@
 require __DIR__ . '/../bootstrap.php';
 
 use function python\import;
-use function python\import_sub;
+use function python\import_from;
 
 extract(import('paddle'));
 echo $paddle->__version__, PHP_EOL;
 
-extract(import_sub('paddle.vision.transforms', 'Compose,Normalize'));
+extract(import_from('paddle.vision.transforms', 'Compose,Normalize'));
 
 $transform = $Compose([$Normalize(mean: [127.5], std: [127.5], data_format: 'CHW')]);
 # 使用transform对数据集做归一化
@@ -28,7 +28,7 @@ print('train_data0 label is: ' . PyCore::str($train_label_0) . "\n");
 
 PyCore::import('sys')->path->append(realpath('.'));
 extract(import('LeNet'));
-extract(import_sub('paddle.metric', 'Accuracy'));
+extract(import_from('paddle.metric', 'Accuracy'));
 $model = $paddle->Model($LeNet->LeNet());  # 用Model封装模型
 $optim = $paddle->optimizer->Adam(learning_rate: 0.001, parameters: $model->parameters());
 

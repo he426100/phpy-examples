@@ -5,12 +5,12 @@
 
 require __DIR__ . '/../bootstrap.php';
 
-use function python\import_sub;
+use function python\import_from;
 use function Laravel\Prompts\text;
 use function Laravel\Prompts\info;
 use function Laravel\Prompts\error;
 
-extract(import_sub('modelscope', 'AutoModelForCausalLM,AutoTokenizer,GenerationConfig'));
+extract(import_from('modelscope', 'AutoModelForCausalLM,AutoTokenizer,GenerationConfig'));
 
 $model_path = ms_hub_download('qwen/Qwen-1_8B-Chat');
 # Note: The default behavior now has injection attack prevention off.
