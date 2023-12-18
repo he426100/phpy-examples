@@ -22,7 +22,7 @@ print($result . "\n");
 
 ### 使用图像文件
 ### 请准备好名为'ocr_recognition_licenseplate.jpg'的图像文件
-# img_path = 'ocr_recognition_licenseplate.jpg'
-# img = cv2.imread(img_path)
-# result = ocr_recognition(img)
-# print(result)
+# $img_path = 'ocr_recognition_licenseplate.jpg';
+# $img = $cv2->imread($img_path);
+# $result = $ocr_recognition($img);
+# print($result . "\n");
