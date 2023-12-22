@@ -28,10 +28,11 @@
 - [https://docs.anaconda.com/free/anaconda/install/linux/](https://docs.anaconda.com/free/anaconda/install/linux/)
 
 ### 加速pip
-- 阿里源
+- 阿里源（可搭配清华源一起用）
 ```sh
 pip config set global.index-url https://mirrors.aliyun.com/pypi/simple 
 pip config set install.trusted-host mirrors.aliyun.com
+# pip config set global.extra-index-url "https://pypi.tuna.tsinghua.edu.cn/simple"
 ```
 
 ### 安装环境
