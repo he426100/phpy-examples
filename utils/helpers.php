@@ -2,8 +2,10 @@
 
 namespace python {
 
+    use Generator;
     use PyCore;
     use PyModule;
+    use PyObject;
 
     if (!function_exists('py')) {
         /**
@@ -45,6 +47,21 @@ namespace python {
             }
             $module = PyCore::import($name);
             return array_merge(...array_map(fn ($e) => [$e => $module->$e], $subs));
+        }
+    }
+
+    if (!function_exists('iter')) {
+        /**
+         * 
+         * @param mixed $res 
+         * @return Generator<int, null|PyObject, mixed, void> 
+         */
+        function iter($res)
+        {
+            $iter = PyCore::iter($res);
+            while (!is_null($value = PyCore::next($iter))) {
+                yield $value;
+            }
         }
     }
 }
