@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/modelscope-repo/modelscope:ubuntu22.04-py310-torch2.1.0-tf2.14.0-1.10.0
+FROM python
 
 COPY install-php.sh .
 RUN ./install-php.sh && rm install-php.sh
@@ -9,7 +9,7 @@ RUN curl -sfL https://getcomposer.org/installer | php -- --install-dir=/usr/bin 
 
 RUN git clone https://github.com/swoole/phpy && cd phpy && \
     phpize && \
-    ./configure --with-python-dir=/opt/conda && \
+    ./configure --with-python-config=/usr/local/bin/python-config && \
     make install && \
     echo "extension=phpy.so" > /usr/local/etc/php/conf.d/20_phpy.ini && \
     php --ri phpy && \
