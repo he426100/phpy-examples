@@ -1,70 +1,13 @@
 <?php
 
+require __DIR__ . '/../Phpautogui.php';
+
 // 导入所需的 Python 模块
 $sys = PyCore::import('sys');
 $QtCore = PyCore::import('PySide6.QtCore');
 $QtWidgets = PyCore::import('PySide6.QtWidgets');
 $QtGui = PyCore::import('PySide6.QtGui');
 $operator = PyCore::import('operator');
-
-$ffi = FFI::cdef(
-    "
-    typedef int BOOL;
-    typedef unsigned int UINT;
-    typedef unsigned long DWORD;
-    typedef long LONG;
-    typedef unsigned char BYTE;
-    typedef unsigned int UINT;
-    typedef unsigned long ULONG_PTR;
-    typedef void* HWND;
-
-    typedef struct tagRECT {
-        LONG left;
-        LONG top;
-        LONG right;
-        LONG bottom;
-    } RECT, *PRECT, *NPRECT, *LPRECT;
-
-    typedef struct tagPOINT {
-        LONG x;
-        LONG y;
-    } POINT, *PPOINT, *NPPOINT, *LPPOINT;
-
-    HWND GetDesktopWindow();
-    BOOL GetCursorPos(POINT *lpPoint);
-    BOOL SetCursorPos(int X, int Y);
-    BOOL GetWindowRect(HWND hWnd, RECT *lpRect);
-    int GetSystemMetrics(int nIndex);
-
-    void keybd_event(
-        BYTE bVk, 
-        BYTE bScan, 
-        DWORD dwFlags, 
-        DWORD dwExtraInfo
-    );
-
-    void mouse_event(
-        DWORD dwFlags, 
-        DWORD dx, 
-        DWORD dy, 
-        DWORD dwData, 
-        ULONG_PTR dwExtraInfo
-    );
-    ",
-    'user32.dll'
-);
-
-function _keyDown($vkCode)
-{
-    global $ffi;
-    $ffi->keybd_event($vkCode, 0, 0x0000, 0);
-}
-
-function _keyUp($vkCode)
-{
-    global $ffi;
-    $ffi->keybd_event($vkCode, 0, 0x0002, 0);
-}
 
 class AutomationTool
 {
@@ -172,9 +115,11 @@ class AutomationTool
 
         $i = 0;
         $j = count($this->history) - 1;
-        $process = function () use (&$process, &$i, $j, $QtCore) {
+        $ffi = (new Phpautogui())->ffi();
+        $process = function () use (&$process, &$i, $j, $QtCore, $ffi) {
             $event = $this->history[$i];
-            _keyDown($event[1]);
+            $ffi->keybd_event($event[1], 0, Phpautogui::KEYEVENTF_KEYDOWN, 0);
+            $ffi->keybd_event($event[1], 0, Phpautogui::KEYEVENTF_KEYUP, 0);
             if ($i < $j) {
                 $i++;
                 $QtCore->QTimer->singleShot(30, $process);
