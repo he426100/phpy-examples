@@ -10,3 +10,4 @@
 /paddlenlp/output
 .env
 composer.lock
+/30s
